@@ -31,14 +31,14 @@ export class Renderer {
     draw() {
       const c = this.ctx;
 
-      c.fillStyle = "black";
+      c.fillStyle = "rgb(119, 119, 17)";
       c.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
       c.fillStyle = "#028";
       c.fillRect(200, 0 , this.canvas.width - 200, this.canvas.height);
 
       c.fillStyle = "rgb(110, 74, 96)";
-      c.fillRect(220, 20, this.canvas.width - 240, this.canvas.height - 40);
+      c.fillRect(204, 4, this.canvas.width - 208, this.canvas.height - 8);
 
       c.fillStyle = "white";
       c.fillText("UI", 5, 5);
