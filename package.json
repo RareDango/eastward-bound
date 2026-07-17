@@ -1,0 +1,24 @@
+{
+  "name": "eastward-bound",
+  "version": "1.0.0",
+  "description": "Simple tactics game. Trying to apply what I learned from my last project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RareDango/eastward-bound.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/RareDango/eastward-bound/issues"
+  },
+  "homepage": "https://github.com/RareDango/eastward-bound#readme",
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}
