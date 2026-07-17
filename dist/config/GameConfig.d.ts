@@ -1,6 +1,8 @@
 export declare const SCREEN: {
     width: number;
     height: number;
+    uiWidth: number;
+    mapWidth: number;
 };
 export declare const BATTLE: {
     mapWidth: number;

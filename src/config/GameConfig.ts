@@ -1,13 +1,15 @@
 export const SCREEN = {
-  width: 844,   // google says these are iphone dimensions with top bar. not sure if true.
-  height: 390
+  width: 768,
+  height: 384,
+  uiWidth: 292,
+  mapWidth: 476 // includes border
 };
 
 export const BATTLE = {
     mapWidth: 10, // 10 tiles wide
     mapHeight: 8, // 8 tiles tall
-    tileSize: 44, // 44 pixels per tile
-    borderSize: 4
+    tileSize: 46, // 46 pixels per tile
+    borderSize: 8
 };
 
 export const DEBUG = {

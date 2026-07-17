@@ -1,3 +1,4 @@
+import * as cfg from "../config/GameConfig.js";
 export class Renderer {
 
     private ctx: CanvasRenderingContext2D;
@@ -35,15 +36,35 @@ export class Renderer {
       c.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
       c.fillStyle = "#028";
-      c.fillRect(200, 0 , this.canvas.width - 200, this.canvas.height);
+      c.fillRect(cfg.SCREEN.uiWidth, 0, this.canvas.width - cfg.SCREEN.uiWidth, this.canvas.height);
 
       c.fillStyle = "rgb(110, 74, 96)";
-      c.fillRect(204, 4, this.canvas.width - 208, this.canvas.height - 8);
+      c.fillRect(cfg.SCREEN.uiWidth + cfg.BATTLE.borderSize, cfg.BATTLE.borderSize,
+        cfg.SCREEN.mapWidth - cfg.BATTLE.borderSize * 2, this.canvas.height - cfg.BATTLE.borderSize * 2);
 
       c.fillStyle = "white";
-      c.fillText("UI", 5, 5);
-      c.fillText("Border", 205, 5);
-      c.fillText("Map", 225, 25);
+      c.fillText("UI width:" + cfg.SCREEN.uiWidth, 5, 5);
+
+      this.drawGridlines();
+    }
+
+    drawGridlines() {
+      const c = this.ctx;
+      c.strokeStyle = "#000";
+
+      const xOffset = cfg.SCREEN.uiWidth + cfg.BATTLE.borderSize;
+      const yOffset = cfg.BATTLE.borderSize;
+      
+      for (let x = 0; x <= cfg.SCREEN.mapWidth; x += 46) {
+        c.moveTo(x + xOffset, yOffset);
+        c.lineTo(x + xOffset, cfg.SCREEN.height - yOffset);
+        c.stroke();
+      }
+      for (let y = 0; y <= cfg.SCREEN.height; y += 46) {
+        c.moveTo(xOffset, y + yOffset);
+        c.lineTo(cfg.SCREEN.width - 8, y + yOffset);
+        c.stroke();
+      }
     }
 
 }
