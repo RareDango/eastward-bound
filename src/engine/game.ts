@@ -7,6 +7,8 @@ export class Game {
     private renderer: Renderer;
     private input: Input;
 
+    private dirtyRender = true;
+
     constructor() {
         const canvas = document.getElementById("game") as HTMLCanvasElement;
         this.renderer = new Renderer(canvas);
@@ -23,10 +25,11 @@ export class Game {
 
         this.update();
 
-        this.render();
+        if (this.dirtyRender) {
+          this.render();
+        }
 
         requestAnimationFrame(this.gameLoop);
-
     };
 
 
@@ -38,6 +41,7 @@ export class Game {
     private render() {
         this.renderer.clear();
         this.renderer.draw();
+        this.dirtyRender = false;
     }
 
 }

@@ -1,6 +1,7 @@
 export declare class Renderer {
     private canvas;
-    private ctx;
+    private context;
+    private frames;
     constructor(canvas: HTMLCanvasElement);
     clear(): void;
     draw(): void;

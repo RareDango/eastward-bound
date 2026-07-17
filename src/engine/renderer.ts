@@ -1,8 +1,9 @@
 import * as cfg from "../config/GameConfig.js";
 export class Renderer {
 
-    private ctx: CanvasRenderingContext2D;
+    private context: CanvasRenderingContext2D;
 
+    private frames = 0;
 
     constructor(
         private canvas: HTMLCanvasElement
@@ -14,23 +15,23 @@ export class Renderer {
             throw new Error("Could not get canvas context");
         }
 
-        this.ctx = context;
+        this.context = context;
 
     }
 
 
     clear() {
-      const c = this.ctx;
+      const c = this.context;
       c.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-      this.ctx.font = "15px GameFont";
+      this.context.font = "15px GameFont";
       c.textAlign = "left";
       c.textBaseline = "top";
     }
 
 
     draw() {
-      const c = this.ctx;
+      const c = this.context;
 
       c.fillStyle = "rgb(119, 119, 17)";
       c.fillRect(0, 0, this.canvas.width, this.canvas.height);
@@ -45,11 +46,14 @@ export class Renderer {
       c.fillStyle = "white";
       c.fillText("UI width:" + cfg.SCREEN.uiWidth, 5, 5);
 
+      this.frames += 1;
+      c.fillText("Frames drawn: " + this.frames, 5, 25);
+
       this.drawGridlines();
     }
 
     drawGridlines() {
-      const c = this.ctx;
+      const c = this.context;
       c.strokeStyle = "#000";
 
       const xOffset = cfg.SCREEN.uiWidth + cfg.BATTLE.borderSize;
@@ -66,5 +70,4 @@ export class Renderer {
         c.stroke();
       }
     }
-
 }

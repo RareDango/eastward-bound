@@ -1,6 +1,7 @@
 export declare class Game {
     private renderer;
     private input;
+    private dirtyRender;
     constructor();
     start(): void;
     private gameLoop;

@@ -37,13 +37,15 @@ function resizeCanvas() {
 
     canvas.style.width = `${displayWidth}px`;
     canvas.style.height = `${displayHeight}px`;
+
+
 }
 
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 
 async function main() {
-    await document.fonts.load("5px GameFont");
+    await document.fonts.load("15px GameFont");
 
     const game = new Game();
     game.start();
