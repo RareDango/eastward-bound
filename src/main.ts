@@ -1,6 +1,7 @@
 import * as cfg from "./config/GameConfig.js";
 import { Game } from "./engine/Game.js";
 import { Input } from "./engine/Input.js";
+import { Renderer } from "./engine/Renderer.js";
 
 const canvas = document.getElementById("game") as HTMLCanvasElement;
 canvas.width = cfg.SCREEN.width;
@@ -45,8 +46,6 @@ window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 
 async function main() {
-    await document.fonts.load("15px GameFont");
-
     const game = new Game();
     game.start();
 }
