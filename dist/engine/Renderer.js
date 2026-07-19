@@ -37,7 +37,6 @@ export class Renderer {
         const c = this.context;
         c.font = "24px Arial";
         c.fillStyle = "#FFF";
-        c.textRendering = "optimizeLegibility";
         c.fillText(text, x, y);
     }
 }

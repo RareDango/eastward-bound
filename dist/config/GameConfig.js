@@ -4,6 +4,9 @@ export const SCREEN = {
     uiWidth: 292,
     mapWidth: 476 // includes border
 };
+export const GAME = {
+    fps: 10
+};
 export const BATTLE = {
     mapWidth: 10, // 10 tiles wide
     mapHeight: 8, // 8 tiles tall

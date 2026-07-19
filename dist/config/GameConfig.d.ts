@@ -4,6 +4,9 @@ export declare const SCREEN: {
     uiWidth: number;
     mapWidth: number;
 };
+export declare const GAME: {
+    fps: number;
+};
 export declare const BATTLE: {
     mapWidth: number;
     mapHeight: number;

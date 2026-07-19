@@ -6,29 +6,33 @@ export class Game {
     renderer;
     input;
     currentScene;
-    dirtyRender = true;
+    dirtyRender = false;
     constructor() {
         const canvas = document.getElementById("game");
         this.renderer = new Renderer(canvas);
         this.input = new Input(canvas, cfg.SCREEN.width, cfg.SCREEN.height);
         this.currentScene = new MainMenuScene(this);
+        this.markDirty();
     }
     start() {
         requestAnimationFrame(this.gameLoop);
     }
+    timeStart = performance.now();
+    timePassed = 0;
     gameLoop = () => {
         this.currentScene.update();
-        this.currentScene.render(this.renderer);
+        const now = performance.now();
+        this.timePassed = now - this.timeStart;
+        if (this.timePassed >= 1000 / cfg.GAME.fps) {
+            this.timeStart += this.timePassed;
+            if (this.dirtyRender) {
+                this.renderer.clear();
+                this.currentScene.render(this.renderer);
+                this.dirtyRender = false;
+            }
+        }
         requestAnimationFrame(this.gameLoop);
     };
-    update() {
-        // Game logic goes here
-    }
-    render() {
-        this.renderer.clear();
-        this.renderer.draw();
-        this.dirtyRender = false;
-    }
     changeScene(scene) {
         this.currentScene.onExit?.();
         this.currentScene = scene;

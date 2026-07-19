@@ -6,9 +6,9 @@ export declare class Game {
     private dirtyRender;
     constructor();
     start(): void;
+    private timeStart;
+    private timePassed;
     private gameLoop;
-    private update;
-    private render;
     changeScene(scene: Scene): void;
     private markDirty;
 }
