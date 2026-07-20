@@ -2,14 +2,15 @@ import * as cfg from "../config/GameConfig.js";
 export class Renderer {
     canvas;
     context;
-    constructor(canvas) {
+    font;
+    constructor(canvas, font) {
         this.canvas = canvas;
         const context = canvas.getContext("2d");
         if (!context)
             throw new Error("Could not get canvas context");
         this.context = context;
-        this.context.textAlign = "left";
-        this.context.textBaseline = "top";
+        this.context.imageSmoothingEnabled = false;
+        this.font = font;
     }
     clear() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -36,16 +37,37 @@ export class Renderer {
         this.context.drawImage(image, x, y);
     }
     drawText(text, x, y, size = "mid") {
-        const c = this.context;
-        c.font = "16px Arial";
-        if (size === "big")
-            c.font = "32px Arial";
-        if (size === "small")
-            c.font = "12px Arial";
+        const t = text.toUpperCase();
+        let scale = 3;
         if (size === "tiny")
-            c.font = "8px Arial";
-        c.fillStyle = "#000";
-        c.fillText(text, x, y);
+            scale = 1;
+        if (size === "small")
+            scale = 2;
+        if (size === "big")
+            scale = 4;
+        if (size === "huge")
+            scale = 5;
+        for (const char of t) {
+            this.drawChar(char, x, y, scale);
+            x += 6 * scale;
+        }
+    }
+    drawChar(char, x, y, scale) {
+        console.log(char);
+        const unicode = char.codePointAt(0);
+        console.log(unicode);
+        if (!unicode)
+            throw console.error("Unicode character undefined?");
+        const index = unicode - 32;
+        if (index < 0 || index > 99)
+            throw console.error("Character out of range.");
+        let sourceX = index * 5;
+        let sourceY = 0;
+        while (sourceX >= 50) {
+            sourceX -= 50;
+            sourceY += 10;
+        }
+        this.context.drawImage(this.font, sourceX, sourceY, 5, 10, x, y, 5 * scale, 10 * scale);
     }
 }
 //# sourceMappingURL=Renderer.js.map

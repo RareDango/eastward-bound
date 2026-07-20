@@ -17,11 +17,11 @@ export class MainMenuScene implements Scene {
     r.drawImage(this.backgroundImage, 0, 0);
     r.drawGridlines();
 
-    r.drawText("Name Goes Here!", 10, 10, "big");
-    r.drawText("_______________", 10, 10, "big");
-    r.drawText("Eastward Bound!", 10, 100);
-    r.drawText("Small text here. HELLO HELLO!!!", 30, 45, "small");
-    r.drawText("Tiny text! WHAT IS THIS!?", 20, 60, "tiny");
+    r.drawText("huge text", 10, 100, "huge");
+    r.drawText("big text", 10, 70, "big");
+    r.drawText("Medium text", 10, 40);
+    r.drawText("Small text", 10, 20, "small");
+    r.drawText("Tiny text! WHAT IS THIS!?", 10, 10, "tiny");
   }
 
   onEnter(): void {

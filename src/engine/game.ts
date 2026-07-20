@@ -19,7 +19,7 @@ export class Game {
   constructor(assets: AssetManager) {
     this.assets = assets;
     const canvas = document.getElementById("game") as HTMLCanvasElement;
-    this.renderer = new Renderer(canvas);
+    this.renderer = new Renderer(canvas, assets.getImage("font"));
     this.input = new Input(canvas, cfg.SCREEN.width, cfg.SCREEN.height);
     this.currentScene = new MainMenuScene(this);
     this.markDirty();
