@@ -10,9 +10,10 @@ export class MainMenuScene {
         r.drawImage(this.backgroundImage, 0, 0);
         r.drawGridlines();
         r.drawText("Name Goes Here!", 10, 10, "big");
+        r.drawText("_______________", 10, 10, "big");
         r.drawText("Eastward Bound!", 10, 100);
         r.drawText("Small text here. HELLO HELLO!!!", 30, 45, "small");
-        r.drawText("Tiny text! WHAT IS THIS!?", 60, 60, "tiny");
+        r.drawText("Tiny text! WHAT IS THIS!?", 20, 60, "tiny");
     }
     onEnter() {
         console.log("Entered Main Menu");
