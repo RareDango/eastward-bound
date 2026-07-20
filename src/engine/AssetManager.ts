@@ -18,7 +18,7 @@ export class AssetManager {
 
   async assetsLoaded(): Promise<void> {
     await Promise.all([
-      this.loadImage("battleBg", "../assets/bg.png")
+      this.loadImage("battleBg", "../assets/background.png")
     ]);
     console.log("Assets loaded!")
     return;
