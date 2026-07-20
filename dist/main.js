@@ -33,10 +33,10 @@ function resizeCanvas() {
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 async function main() {
+    const assets = new AssetManager();
+    await assets.assetsLoaded();
     const game = new Game(assets);
     game.start();
 }
-const assets = new AssetManager();
-await assets.loadImage("battleBg", "./assets/bg.png");
 main();
 //# sourceMappingURL=main.js.map

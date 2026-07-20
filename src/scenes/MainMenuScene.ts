@@ -13,15 +13,18 @@ export class MainMenuScene implements Scene {
 
   }
 
-  render(renderer: Renderer): void {
-    renderer.drawImage(this.backgroundImage, 0, 0);
-    renderer.drawGridlines();
-    renderer.drawText("Eastward Bound!", 10, 100);
+  render(r: Renderer): void {
+    r.drawImage(this.backgroundImage, 0, 0);
+    r.drawGridlines();
+
+    r.drawText("Name Goes Here!", 10, 10, "big");
+    r.drawText("Eastward Bound!", 10, 100);
+    r.drawText("Small text here. HELLO HELLO!!!", 30, 45, "small");
+    r.drawText("Tiny text! WHAT IS THIS!?", 60, 60, "tiny");
   }
 
   onEnter(): void {
     console.log("Entered Main Menu");
-    
   }
 
   

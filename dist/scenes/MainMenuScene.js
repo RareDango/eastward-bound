@@ -1,17 +1,18 @@
 import { Renderer } from "../engine/Renderer.js";
 export class MainMenuScene {
-    game;
     backgroundImage;
     constructor(game) {
-        this.game = game;
         this.backgroundImage = game.assets.getImage("battleBg");
     }
     update() {
     }
-    render(renderer) {
-        renderer.drawImage(this.backgroundImage, 0, 0);
-        renderer.drawGridlines();
-        renderer.drawText("Eastward Bound!", 10, 100);
+    render(r) {
+        r.drawImage(this.backgroundImage, 0, 0);
+        r.drawGridlines();
+        r.drawText("Name Goes Here!", 10, 10, "big");
+        r.drawText("Eastward Bound!", 10, 100);
+        r.drawText("Small text here. HELLO HELLO!!!", 30, 45, "small");
+        r.drawText("Tiny text! WHAT IS THIS!?", 60, 60, "tiny");
     }
     onEnter() {
         console.log("Entered Main Menu");

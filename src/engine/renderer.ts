@@ -7,6 +7,9 @@ export class Renderer {
     const context = canvas.getContext("2d");
     if (!context) throw new Error("Could not get canvas context");
     this.context = context;
+
+    this.context.textAlign = "left";
+    this.context.textBaseline = "top";
   }
 
   clear() {
@@ -40,10 +43,13 @@ export class Renderer {
     this.context.drawImage(image, x, y);
   }
 
-  drawText(text: string, x: number, y: number) {
+  drawText(text: string, x: number, y: number, size = "mid") {
     const c = this.context;
-    c.font = "24px Arial";
-    c.fillStyle = "#FFF";
+    c.font = "16px Arial";
+    if(size === "big") c.font = "32px Arial";
+    if(size === "small") c.font = "12px Arial";
+    if(size === "tiny") c. font = "8px Arial";
+    c.fillStyle = "#000";
     c.fillText(text, x, y);
   }
 }

@@ -14,7 +14,10 @@ export class AssetManager {
         return image;
     }
     async assetsLoaded() {
-        this.loadImage("battleBg", "../assets/bg.png");
+        await Promise.all([
+            this.loadImage("battleBg", "../assets/bg.png")
+        ]);
+        console.log("Assets loaded!");
         return;
     }
 }
