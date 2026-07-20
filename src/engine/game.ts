@@ -4,6 +4,7 @@ import { Input } from "./Input.js";
 
 import { MainMenuScene } from "../scenes/MainMenuScene.js";
 import type { Scene } from "./Scene.js";
+import type { AssetManager } from "./AssetManager.js";
 
 export class Game {
   private renderer: Renderer;
@@ -13,7 +14,10 @@ export class Game {
 
   private dirtyRender = false;
 
-  constructor() {
+  assets: AssetManager;
+
+  constructor(assets: AssetManager) {
+    this.assets = assets;
     const canvas = document.getElementById("game") as HTMLCanvasElement;
     this.renderer = new Renderer(canvas);
     this.input = new Input(canvas, cfg.SCREEN.width, cfg.SCREEN.height);

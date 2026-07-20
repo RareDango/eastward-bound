@@ -2,6 +2,7 @@ import * as cfg from "./config/GameConfig.js";
 import { Game } from "./engine/Game.js";
 import { Input } from "./engine/Input.js";
 import { Renderer } from "./engine/Renderer.js";
+import { AssetManager } from "./engine/AssetManager.js";
 
 const canvas = document.getElementById("game") as HTMLCanvasElement;
 canvas.width = cfg.SCREEN.width;
@@ -46,8 +47,10 @@ window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 
 async function main() {
-    const game = new Game();
+    const game = new Game(assets);
     game.start();
 }
 
+const assets = new AssetManager();
+await assets.assetsLoaded();
 main();

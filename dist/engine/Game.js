@@ -7,7 +7,9 @@ export class Game {
     input;
     currentScene;
     dirtyRender = false;
-    constructor() {
+    assets;
+    constructor(assets) {
+        this.assets = assets;
         const canvas = document.getElementById("game");
         this.renderer = new Renderer(canvas);
         this.input = new Input(canvas, cfg.SCREEN.width, cfg.SCREEN.height);

@@ -3,9 +3,10 @@ import { Renderer } from "../engine/Renderer.js";
 import type { Game } from "../engine/Game.js";
 
 export class MainMenuScene implements Scene {
-  private backgroundImage = new Image();
-  constructor(private game: Game) {
-    this.backgroundImage.src = "assets/bg.png";
+  private backgroundImage: HTMLImageElement;
+
+  constructor(game: Game) {
+    this.backgroundImage = game.assets.getImage("battleBg");
   }
 
   update(): void {
@@ -20,6 +21,8 @@ export class MainMenuScene implements Scene {
 
   onEnter(): void {
     console.log("Entered Main Menu");
+    
   }
 
+  
 }

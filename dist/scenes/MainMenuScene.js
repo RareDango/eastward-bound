@@ -1,10 +1,10 @@
 import { Renderer } from "../engine/Renderer.js";
 export class MainMenuScene {
     game;
-    backgroundImage = new Image();
+    backgroundImage;
     constructor(game) {
         this.game = game;
-        this.backgroundImage.src = "assets/bg.png";
+        this.backgroundImage = game.assets.getImage("battleBg");
     }
     update() {
     }
