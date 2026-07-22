@@ -20,6 +20,7 @@ export class Renderer {
     drawGridlines() {
         const c = this.context;
         c.strokeStyle = "#FFF";
+        c.lineWidth = 2;
         const xOffset = cfg.SCREEN.uiWidth + cfg.BATTLE.borderSize;
         const yOffset = cfg.BATTLE.borderSize;
         for (let x = 0; x <= cfg.SCREEN.mapWidth; x += 46) {
@@ -33,29 +34,29 @@ export class Renderer {
             c.stroke();
         }
     }
+    drawRect(x, y, width, height, color = "#FFF") {
+        const c = this.context;
+        c.fillStyle = color;
+        c.fillRect(x, y, width, height);
+    }
+    strokeRect(x, y, width, height, lineWidth = 1, color = "#FFF") {
+        const c = this.context;
+        c.strokeStyle = color;
+        c.lineWidth = lineWidth;
+        c.strokeRect(x + lineWidth / 2, y + lineWidth / 2, width - lineWidth, height - lineWidth);
+    }
     drawImage(image, x, y) {
         this.context.drawImage(image, x, y);
     }
-    drawText(text, x, y, size = "mid") {
+    drawText(text, x, y, scale = 2) {
         const t = text.toUpperCase();
-        let scale = 3;
-        if (size === "tiny")
-            scale = 1;
-        if (size === "small")
-            scale = 2;
-        if (size === "big")
-            scale = 4;
-        if (size === "huge")
-            scale = 5;
         for (const char of t) {
             this.drawChar(char, x, y, scale);
             x += 6 * scale;
         }
     }
     drawChar(char, x, y, scale) {
-        console.log(char);
         const unicode = char.codePointAt(0);
-        console.log(unicode);
         if (!unicode)
             throw console.error("Unicode character undefined?");
         const index = unicode - 32;

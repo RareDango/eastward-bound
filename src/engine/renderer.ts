@@ -24,6 +24,7 @@ export class Renderer {
   drawGridlines() {
     const c = this.context;
     c.strokeStyle = "#FFF";
+    c.lineWidth = 2;
 
     const xOffset = cfg.SCREEN.uiWidth + cfg.BATTLE.borderSize;
     const yOffset = cfg.BATTLE.borderSize;
@@ -40,17 +41,26 @@ export class Renderer {
     }
   }
 
+  drawRect(x: number, y: number, width: number, height: number, color: string = "#FFF") {
+    const c = this.context;
+    c.fillStyle = color;
+    c.fillRect(x, y, width, height)
+  }
+
+  strokeRect(x: number, y: number, width: number, height: number, lineWidth: number = 1, color: string = "#FFF") {
+    const c = this.context;
+    c.strokeStyle = color;
+    c.lineWidth = lineWidth;
+    c.strokeRect(x+lineWidth/2, y+lineWidth/2, width-lineWidth, height-lineWidth)
+  }
+
   drawImage(image: HTMLImageElement, x: number, y: number) {
     this.context.drawImage(image, x, y);
   }
 
-  drawText(text: string, x: number, y: number, size = "mid") {
+  drawText(text: string, x: number, y: number, scale = 2) {
     const t = text.toUpperCase();
-    let scale = 3;
-    if(size === "tiny") scale = 1;
-    if(size === "small") scale = 2;
-    if(size === "big") scale = 4;
-    if(size === "huge") scale = 5;
+
     for(const char of t) {
       this.drawChar(char, x, y, scale)
       x += 6 * scale;
@@ -58,9 +68,7 @@ export class Renderer {
   }
 
   private drawChar(char: string, x: number, y: number, scale: number) {
-    console.log(char);
     const unicode = char.codePointAt(0);
-    console.log(unicode);
     if(!unicode) throw console.error("Unicode character undefined?");
     const index = unicode - 32;
     if(index < 0 || index > 99) throw console.error("Character out of range.");
@@ -72,19 +80,7 @@ export class Renderer {
       sourceY += 10;
     }
 
-    this.context.drawImage(
-      this.font,
-
-      sourceX,
-      sourceY,
-      5,
-      10,
-
-      x,
-      y,
-      5 * scale,
-      10 * scale
-    );
+    this.context.drawImage(this.font, sourceX, sourceY, 5, 10, x, y, 5 * scale, 10 * scale);
   }
 }
 

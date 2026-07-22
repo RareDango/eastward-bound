@@ -4,5 +4,6 @@ export interface Scene {
     render(renderer: Renderer): void;
     onEnter?(): void;
     onExit?(): void;
+    onPointerDown(x: number, y: number): void;
 }
 //# sourceMappingURL=Scene.d.ts.map

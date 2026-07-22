@@ -6,8 +6,10 @@ export declare class Renderer {
     clear(): void;
     draw(): void;
     drawGridlines(): void;
+    drawRect(x: number, y: number, width: number, height: number, color?: string): void;
+    strokeRect(x: number, y: number, width: number, height: number, lineWidth?: number, color?: string): void;
     drawImage(image: HTMLImageElement, x: number, y: number): void;
-    drawText(text: string, x: number, y: number, size?: string): void;
+    drawText(text: string, x: number, y: number, scale?: number): void;
     private drawChar;
 }
 //# sourceMappingURL=Renderer.d.ts.map

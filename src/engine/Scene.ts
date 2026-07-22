@@ -6,4 +6,6 @@ export interface Scene {
 
     onEnter?(): void;
     onExit?(): void;
+
+    onPointerDown(x: number, y: number): void;
 }
